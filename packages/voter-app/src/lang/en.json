@@ -1,0 +1,240 @@
+{
+    "app.name": "ElectionGuard",
+    "app.placeholder": "placeholder",
+    "app.greeting": "Welcome to",
+    "app.about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+
+    "auth.logout": "Sign Out",
+
+    "menu.prompt": "What do you want to do?",
+    "menu.option.manage_users": "Manage Users",
+    "menu.option.join_key_ceremony": "Join Key Ceremony",
+    "menu.option.setup_election": "Setup Election",
+    "menu.option.begin_tally_ceremony": "Begin Tally Ceremony",
+    "menu.option.upload_manifest": "Upload Manifest",
+    "menu.option.build_manifest": "Build Manifest",
+    "menu.option.manage_joint_keys": "Manage Joint Keys",
+    "menu.option.manage_elections": "Manage Elections",
+    "menu.option.setup_joint_keys": "Setup Joint Keys",
+
+    "login_form.username": "Username",
+    "login_form.password": "Password",
+    "login_form.submit": "Submit",
+
+    "election_setup.joint_key_upload.title": "Upload Joint Key",
+    "election_setup.joint_key_upload.no_file": "No file found.  Please try again.",
+    "election_setup.joint_key_upload.invalid_file": "That file didn't look quite right. Please ensure it's the same key file that was produced by an election ceremony.",
+    "election_setup.joint_key_upload.select_files": "Select Files to Upload",
+
+    "election_setup.joint_key_select.title": "Select Guardian Key",
+    "election_setup.joint_key_select.prompt": "Guardian Key",
+    "election_setup.joint_key_select.next": "Next Step",
+
+    "election_setup.manifest_preview.property.id": "Id",
+    "election_setup.manifest_preview.title": "Election Manifest Uploaded",
+    "election_setup.manifest_preview.property.name": "Name",
+    "election_setup.manifest_preview.property.number_of_contests": "Number of Contests",
+    "election_setup.manifest_preview.property.numberOfStyles": "Number of Ballot Styles",
+    "election_setup.manifest_preview.property.start_date": "Start Date",
+    "election_setup.manifest_preview.property.end_date": "End Date",
+    "election_setup.manifest_preview.property.file_name": "File Name",
+    "election_setup.manifest_preview.next": "Submit",
+    "election_setup.manifest_preview.back_to_menu": "Cancel",
+    "election_setup.manifest_preview.submit_error": "An error occurred while attempting to save the election",
+
+    "election_setup.upload_manifest.title": "Upload Election Manifest",
+    "election_setup.upload_manifest.upload": "Select Files to Upload",
+    "election_setup.upload_manifest.error": "Manifest upload failed",
+    "election_setup.upload_manifest.invalid_file": "Manifest upload failed",
+    "election_setup.upload_manifest.no_file": "Manifest upload failed",
+
+    "election_setup.setup_complete.title": "Congratulations, the election is ready.",
+    "election_setup.setup_complete.next": "Return to Election List",
+
+    "election_setup.basic_info.title": "Election Setup: Basic Info",
+    "election_setup.basic_info.next": "Continue",
+    "election_setup.basic_info.election_id_tooltip": "A unique identifier for an election.",
+
+    "election_list.title": "Election List",
+    "election_list.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "election_list.go_home": "Return to Home",
+
+    "joint_key_setup.key_setup.title": "Key Ceremony Info",
+    "joint_key_setup.guardian_assignment.title": "Invite Guardians",
+    "joint_key_setup.guardian_assignment.assigned_label": "Guardians",
+    "joint_key_setup.guardian_assignment.no_guardians": "You currently have no guardians for this election. You have not met your quorum.",
+    "joint_key_setup.guardian_assignment.assign": "Assign Guardian",
+    "joint_key_setup.guardian_assignment_review.title": "Create Key Ceremony?",
+
+    "key_ceremony_list.title": "Join a Key Ceremony",
+    "key_ceremony_list.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+
+    "joint_key_list.title": "Joint Encryption Keys",
+    "joint_key_list.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+
+    "key_ceremony.introduction.title": "Welcome to the Key Ceremony",
+    "key_ceremony.introduction.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.button": "Continue",
+    "key_ceremony.introduction.steps_heading": "Here's what to expect",
+    "key_ceremony.introduction.steps_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step5": "<italic>Lorem ipsum dolor sit amet</italic>, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step6": "<italic>Lorem ipsum dolor sit amet</italic>, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.introduction.step7": "<italic>Lorem ipsum dolor sit amet</italic>, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+
+    "key_ceremony.meet_guardians.title": "Meet the Guardians",
+    "key_ceremony.meet_guardians.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.meet_guardians.guardian_heading": "Guardians for this election:",
+    "key_ceremony.meet_guardians.button": "Start Key Ceremony",
+
+    "key_ceremony.create_keypair.title": "Create your Election Key Pair",
+    "key_ceremony.create_keypair.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.create_keypair.button": "Generate Election Key Pair",
+
+    "key_ceremony.share_public_key.title": "Share your Public Key",
+    "key_ceremony.share_public_key.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.share_public_key.button": "Share Public Key",
+
+    "key_ceremony.create_backups.title": "Create your Partial Key Backups",
+    "key_ceremony.create_backups.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.create_backups.button": "Generate Partial Key Backups",
+    "key_ceremony.create_backups.disabled_button": "Awaiting Other Guardians",
+
+    "key_ceremony.share_backups.title": "Share your Partial Key Backups",
+    "key_ceremony.share_backups.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.share_backups.button": "Share Partial Key Backups",
+
+    "key_ceremony.verify_backups.title": "Verify Backups",
+    "key_ceremony.verify_backups.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.verify_backups.button": "Confirm Backups Verified",
+    "key_ceremony.verify_backups.disabled_button": "Awaiting Verifications",
+
+    "key_ceremony.combine_keys.title": "Combine Public Keys into Joint Key",
+    "key_ceremony.combine_keys.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.combine_keys.button": "Form Joint Key",
+    "key_ceremony.combine_keys.disabled_button": "Awaiting Guardians",
+
+    "key_ceremony.complete.title": "Key Ceremony Complete",
+    "key_ceremony.complete.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "key_ceremony.complete.button": "Return to Home",
+
+    "key_ceremony.visualization_complete": "Joint Key Created",
+
+    "key_ceremony.steps.instructions": "Instructions",
+    "key_ceremony.steps.meet_guardians": "Meet the Guardians",
+    "key_ceremony.steps.create_keypair": "Create Election KeyPair",
+    "key_ceremony.steps.share_public_key": "Share Election Public Key",
+    "key_ceremony.steps.create_backups": "Create Partial Key Backups",
+    "key_ceremony.steps.share_backups": "Share Partial Key Backups",
+    "key_ceremony.steps.verify_backups": "Verify Partial Key Backups",
+    "key_ceremony.steps.combine_keys": "Form Joint Key",
+    "key_ceremony.steps.complete": "Key Ceremony Complete",
+
+    "tally_ceremony.introduction.title": "Welcome to the Tally Ceremony",
+    "tally_ceremony.introduction.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.introduction.button": "Continue",
+    "tally_ceremony.introduction.steps_heading": "Here's what to expect:",
+    "tally_ceremony.introduction.steps_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.introduction.step1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.introduction.step2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.introduction.step3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.introduction.step4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+
+    "tally_ceremony.download_tally.title": "Download Encrypted Tally",
+    "tally_ceremony.download_tally.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.download_tally.button": "Download",
+
+    "tally_ceremony.decrypt_tally_share.title": "Decrypt Your Share",
+    "tally_ceremony.decrypt_tally_share.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.decrypt_tally_share.button": "Decrypt",
+    "tally_ceremony.decrypt_tally_share.decrypting": "Decrypting. Decryption may take a while",
+    "tally_ceremony.decrypt_tally_share.complete": "Decryption Complete",
+    "tally_ceremony.decrypt_tally_share.complete_button": "Continue",
+
+    "tally_ceremony.upload_tally_share.title": "Upload Your Share",
+    "tally_ceremony.upload_tally_share.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.upload_tally_share.button": "Upload",
+
+    "tally_ceremony.decrypt_missing.title": "Decrypt Missing Guardian Shares",
+    "tally_ceremony.decrypt_missing.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.decrypt_missing.button": "Decrypt",
+    "tally_ceremony.decrypt_missing.decrypting": "Decrypting. Decryption may take a while",
+    "tally_ceremony.decrypt_missing.complete": "Decryption Complete",
+    "tally_ceremony.decrypt_missing.complete_button": "Continue",
+
+    "tally_ceremony.no_missing.title": "No Missing Guardians",
+    "tally_ceremony.no_missing.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.no_missing.button": "Skip",
+
+    "tally_ceremony.upload_missing.title": "Upload Missing Guardian Shares",
+    "tally_ceremony.upload_missing.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.upload_missing.button": "Upload",
+
+    "tally_ceremony.combine_shares.title": "Combine Shares",
+    "tally_ceremony.combine_shares.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.combine_shares.button": "Combine",
+    "tally_ceremony.combine_shares.button_disabled": "Awaiting other guardians",
+
+    "tally_ceremony.complete.title": "Tally Ceremony is Complete",
+    "tally_ceremony.complete.description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis feugiat magna nec nibh congue, non pretium mauris feugiat. Nam commodo ultrices semper. Praesent hendrerit ut nibh nec mollis. Ut fermentum maximus nibh nec vulputate. Fusce ultricies, arcu quis faucibus egestas, ligula tellus placerat orci, sed scelerisque nisl mi eu nisi. Quisque pulvinar justo justo, non tristique enim pretium non. Cras eu lacus gravida, eleifend magna at, ultricies tortor.",
+    "tally_ceremony.complete.button": "Return to Home",
+
+    "tally_ceremony.steps.introduction": "Introduction",
+    "tally_ceremony.steps.download_tally": "Download Encrypted Tally",
+    "tally_ceremony.steps.decrypt_tally_share": "Decrypt Tally Share",
+    "tally_ceremony.steps.upload_tally_share": "Upload Tally Share",
+    "tally_ceremony.steps.decrypt_missing": "Decrypt Share of Missing",
+    "tally_ceremony.steps.upload_missing": "Upload Share of Missing",
+    "tally_ceremony.steps.combine_shares": "Combine Shares",
+    "tally_ceremony.steps.tally_complete": "Tally Ceremony Complete",
+
+    "joint_key.name": "Key Name",
+    "joint_key.number_of_guardians": "Number of Guardians",
+    "joint_key.quorum": "Quorum",
+
+    "guardian": "Guardian",
+    "guardian.name": "Name",
+
+    "placeholder.processing": "Processing",
+    "placeholder.complete": "Complete",
+    "placeholder.error": "Error",
+
+    "actions.cancel": "Cancel",
+    "actions.submit": "Submit",
+    "actions.confirm": "Confirm",
+    "actions.next": "Next",
+    "actions.back": "Back",
+    "actions.continue": "Continue",
+    "actions.previous": "Previous",
+    "actions.edit": "Edit",
+
+    "nav.return_home": "Return to Home",
+
+    "task_status.error": "Error",
+    "task_status.complete": "Complete",
+    "task_status.incomplete": "Incomplete",
+
+    "election_list_page.title": "Elections",
+    "election_list_page.go_home": "Return To Home",
+    "election_list_page.election_id_header": "ID",
+    "election_list_page.name_header": "Name",
+    "election_list_page.state_header": "State",
+    "election_list_page.ballots_header": "Ballots",
+    "election_list_page.no-rows": "No elections found",
+    "election_list_page_upload_ballot": "Upload Ballot",
+
+    "usermanagement.title": "Users",
+
+    "adduser.title": "Add User",
+    "adduser.error": "An error occurred while adding the user",
+
+    "uploadballots.selectfiles": "Upload ballots via a .json file",
+    "uploadballots.title": "Upload Ballots",
+    "uploadballots.error.noballots": "The ballots json file looks wrong, it should contain at least one ballot",
+    "uploadballots.error.ballotsinvalid": "At least one of the ballots in the ballots json file looks incorrect, ensure they all have an object_id, state, and contests",
+    "uploadballots.error.no_file": "No file found.  Please try again.",
+    "uploadballots.error.invalid_file": "That file didn't look quite right. Please ensure it's an encrypted ballot."
+}
