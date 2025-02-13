@@ -2,19 +2,19 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import {
-    ElectionListPage,
-    ElectionSetupPage,
-    ElectionKeyPage,
-    KeyCeremonyPage,
-    KeyListPage,
-    KeySetupPage,
+    // ElectionListPage,
+    // ElectionSetupPage,
+    // ElectionKeyPage,
+    // KeyCeremonyPage,
+    // KeyListPage,
+    // KeySetupPage,
     MenuPage,
-    TallyListPage,
-    TallySetupPage,
-    TallyCeremonyPage,
-    UserManagementPage,
+    // TallyListPage,
+    // TallySetupPage,
+    // TallyCeremonyPage,
+    // UserManagementPage,
 } from '../pages';
-import AddUserPage from '../pages/AddUserPage';
+// import AddUserPage from '../pages/AddUserPage';
 import routeIds from './RouteIds';
 
 /**
@@ -26,7 +26,7 @@ const AuthenticatedRoutes: React.FC = () => (
         <Route path={routeIds.home} element={<Navigate to="/menu" />} />
         <Route path="/menu" element={<MenuPage />} />
 
-        <Route path={routeIds.electionList} element={<ElectionListPage />} />
+        {/* <Route path={routeIds.electionList} element={<ElectionListPage />} />
         <Route path="/election-setup" element={<ElectionSetupPage />} />
         <Route path="/election/:election-id/key" element={<ElectionKeyPage />} />
 
@@ -39,7 +39,7 @@ const AuthenticatedRoutes: React.FC = () => (
         <Route path="/tally/:key-id/ceremony" element={<TallyCeremonyPage />} />
 
         <Route path={routeIds.manageUsers} element={<UserManagementPage />} />
-        <Route path={routeIds.addUser} element={<AddUserPage />} />
+        <Route path={routeIds.addUser} element={<AddUserPage />} /> */}
     </Routes>
 );
 

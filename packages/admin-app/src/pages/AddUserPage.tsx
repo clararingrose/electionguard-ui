@@ -72,6 +72,8 @@ export const AddUserPage: React.FC = () => {
                         >
                             <MenuItem value={UserScope.Guardian}>Guardian</MenuItem>
                             <MenuItem value={UserScope.Admin}>Admin</MenuItem>
+                            <MenuItem value={UserScope.Auditor}>Auditor</MenuItem>
+                            <MenuItem value={UserScope.Voter}>Voter</MenuItem>
                         </Select>
                     </Grid>
                     <Grid item sm={6} xs={12}>

@@ -52,8 +52,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ setToken }) => {
             password,
             grant_type: 'password',
             scope: 'voter',
-            client_id: 'electionguard-default-client-id',
-            client_secret: 'electionguard-default-client-secret',
+            client_id: 'electionguard-voter-client-id',
+            client_secret: 'electionguard-voter-client-secret',
         } as Body_login_for_access_token_api_v1_auth_login_post;
 
         await authClient

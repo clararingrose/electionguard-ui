@@ -1,6 +1,6 @@
 {
-    "name": "@electionguard-ui/admin-app",
-    "description": "Admin application for administrating electionguard",
+    "name": "@electionguard-ui/voter-app",
+    "description": "Voter interface for electionguard",
     "author": "electionguard",
     "license": "MIT",
     "repository": "microsoft/electionguard-ui",

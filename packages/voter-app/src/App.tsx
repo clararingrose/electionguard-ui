@@ -15,6 +15,7 @@ declare module '@mui/styles/defaultTheme' {
 }
 
 const App: React.FunctionComponent = () => {
+    // set election id (token?)
     const { setToken, token } = useToken();
 
     const getContent = () => {
