@@ -1,10 +1,7 @@
 const routeIds = {
     home: '/',
-    electionList: '/election',
-    keySetup: '/key-setup',
-    manageUsers: '/manage-users',
-    addUser: '/add-user',
-    electionListPage: '/election/upload-ballots',
+    vote: '/vote',
+    castorspoil: '/cast-or-spoil',
 };
 
 export default routeIds;

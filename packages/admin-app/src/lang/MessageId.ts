@@ -254,6 +254,10 @@ enum MessageId {
     UploadBallots_Error_BallotsInvalid = 'uploadballots.error.ballotsinvalid',
     UploadBallots_InvalidFile = 'uploadballots.error.invalid_file',
     UploadBallots_NoFile = 'uploadballots.error.no_file',
+
+    // Reset Password
+    ResetPassword_Title = 'resetpassword.title',
+    ResetPassword_Error = 'resetpassword.error',
 }
 
 export default MessageId;

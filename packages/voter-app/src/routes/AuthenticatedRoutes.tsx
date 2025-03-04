@@ -8,11 +8,12 @@ import {
     // KeyCeremonyPage,
     // KeyListPage,
     // KeySetupPage,
-    MenuPage,
     // TallyListPage,
     // TallySetupPage,
     // TallyCeremonyPage,
     // UserManagementPage,
+    VotePage,
+    CastOrSpoilPage,
 } from '../pages';
 // import AddUserPage from '../pages/AddUserPage';
 import routeIds from './RouteIds';
@@ -23,8 +24,11 @@ import routeIds from './RouteIds';
  */
 const AuthenticatedRoutes: React.FC = () => (
     <Routes>
-        <Route path={routeIds.home} element={<Navigate to="/menu" />} />
-        <Route path="/menu" element={<MenuPage />} />
+        <Route path={routeIds.home} element={<Navigate to="/vote" />} />
+        <Route path="/vote" element={<VotePage />} />
+
+        <Route path={routeIds.castorspoil} element={<Navigate to="/cast-or-spoil" />} />
+        <Route path="/cast-or-spoil" element={<CastOrSpoilPage />} />
 
         {/* <Route path={routeIds.electionList} element={<ElectionListPage />} />
         <Route path="/election-setup" element={<ElectionSetupPage />} />

@@ -2,6 +2,7 @@ import { AsyncResult, UserInfo } from '@electionguard/api-client';
 import { UserQueryRequest } from '@electionguard/api-client/dist/nswag/clients';
 import { Box, Container, Fab, Grid } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PasswordIcon from '@mui/icons-material/Password';
 import makeStyles from '@mui/styles/makeStyles';
 import { DefaultTheme } from '@mui/styles';
 import React from 'react';
@@ -47,6 +48,14 @@ export const UserManagementPage: React.FC = () => {
                     <Grid item xs={1} className={classes.buttonArea}>
                         <Fab href={routeIds.addUser} color="primary" size="medium" aria-label="add">
                             <PersonAddIcon />
+                        </Fab>
+                        <Fab
+                            href={routeIds.resetPassword}
+                            color="primary"
+                            size="medium"
+                            aria-label="reset"
+                        >
+                            <PasswordIcon />
                         </Fab>
                     </Grid>
                 </Grid>

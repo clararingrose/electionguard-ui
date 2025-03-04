@@ -5,6 +5,7 @@ const routeIds = {
     manageUsers: '/manage-users',
     addUser: '/add-user',
     electionListPage: '/election/upload-ballots',
+    resetPassword: '/reset-password',
 };
 
 export default routeIds;
