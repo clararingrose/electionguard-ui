@@ -11,3 +11,4 @@ export * from './TallyListPage';
 export * from './TallySetupPage';
 export * from './UserManagementPage';
 export * from './ResetPasswordPage';
+export * from './ElectionPage';

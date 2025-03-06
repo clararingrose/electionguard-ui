@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useNavigate } from 'react-router-dom';
@@ -50,17 +49,12 @@ export const VotePage: React.FC = () => {
                 )}
                 {/* for each item on ballot, create input element dynamically */}
                 <form onSubmit={handleSubmit}>
-                    <input type="radio" name="election" id="one" value="Choice one" />
                     <label htmlFor="one">Choice one</label>
-                    <br />
-                    <input type="radio" name="election" id="two" value="Choice two" />
+                    <input type="radio" name="election" id="one" value="Choice one" /> <br />
                     <label htmlFor="two">Choice two</label>
-
-                    <input type="submit" value="Cast ballot" />
-                    <input type="submit" value="Spoil ballot" />
+                    <input type="radio" name="election" id="two" value="Choice two" />
+                    <input type="submit" value="Encrypt ballot" />
                 </form>
-
-                {/* <FormattedButton /> */}
             </Container>
         </Grid>
     );

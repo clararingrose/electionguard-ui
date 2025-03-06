@@ -2551,6 +2551,43 @@ export class CeremonyClient extends ClientBase {
         }
         return Promise.resolve<ElectionJointKeyResponse>(<any>null);
     }
+
+    /**
+     * Get all Joint Keys
+     * @return Successful Response
+     */
+    async getJointKeys(): Promise<ElectionJointKeyResponse[]> {
+        const url = this.baseUrl + '/joint-keys';
+        const options: RequestInit = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.token}`,
+            },
+        };
+
+        const response = await this.http.fetch(url, options);
+        return this.processGetJointKeys(response);
+    }
+
+    protected async processGetJointKeys(response: Response): Promise<ElectionJointKeyResponse[]> {
+        const status = response.status;
+        if (status === 200) {
+            const responseText = await response.text();
+            const result =
+                responseText === '' ? null : JSON.parse(responseText, this.jsonParseReviver);
+            return result as ElectionJointKeyResponse[];
+        } else {
+            const responseText = await response.text();
+            throw new ApiException(
+                'An unexpected server error occurred.',
+                status,
+                responseText,
+                response.headers,
+                null
+            );
+        }
+    }
 }
 
 export class ChallengeClient extends ClientBase {

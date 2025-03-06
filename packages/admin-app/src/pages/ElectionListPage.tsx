@@ -1,4 +1,4 @@
-import { Container, Tooltip } from '@mui/material';
+import { Container, Tooltip, Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import {
     DataGrid,
@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { ElectionSummaryDto } from '@electionguard/api-client/dist/nswag/clients';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import InternationalText from '../components/InternationalText';
 import MessageId from '../lang/MessageId';
 import IconHeader from '../components/IconHeader';
@@ -51,6 +52,7 @@ export const ElectionListPage: React.FC = () => {
     const [pageSize, setPageSize] = React.useState(10);
     const classes = useStyles();
     const intl = useIntl();
+    const navigate = useNavigate();
 
     const electionClient = useElectionClient();
 
@@ -80,6 +82,10 @@ export const ElectionListPage: React.FC = () => {
             <span>{params.row.cast_ballot_count + params.row.spoiled_ballot_count}</span>
         </Tooltip>
     );
+
+    const handleMoreInfoClick = (electionId: string) => {
+        navigate(`/election/${electionId}`);
+    };
 
     const columns = (): GridColumns => [
         {
@@ -115,9 +121,23 @@ export const ElectionListPage: React.FC = () => {
         {
             field: 'action',
             type: 'actions',
-            headerName: '',
+            headerName: 'Upload Ballots',
             width: 100,
             getActions: actions,
+        },
+        {
+            field: 'moreInfo',
+            headerName: 'More Info',
+            renderCell: (params) => (
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleMoreInfoClick(params.row.election_id)}
+                >
+                    More Info
+                </Button>
+            ),
+            width: 150,
         },
     ];
 

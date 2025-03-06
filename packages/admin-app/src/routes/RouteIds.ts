@@ -1,6 +1,6 @@
 const routeIds = {
     home: '/',
-    electionList: '/election',
+    electionList: '/manage-elections',
     keySetup: '/key-setup',
     manageUsers: '/manage-users',
     addUser: '/add-user',

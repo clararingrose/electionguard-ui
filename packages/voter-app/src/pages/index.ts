@@ -11,3 +11,4 @@ export * from './LoginPage';
 // export * from './UserManagementPage';
 export * from './VotePage';
 export * from './SubmitBallotPage';
+export * from './HomePage';

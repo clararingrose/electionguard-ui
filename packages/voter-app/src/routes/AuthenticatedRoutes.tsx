@@ -1,21 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import {
-    // ElectionListPage,
-    // ElectionSetupPage,
-    // ElectionKeyPage,
-    // KeyCeremonyPage,
-    // KeyListPage,
-    // KeySetupPage,
-    // TallyListPage,
-    // TallySetupPage,
-    // TallyCeremonyPage,
-    // UserManagementPage,
-    VotePage,
-    CastOrSpoilPage,
-} from '../pages';
-// import AddUserPage from '../pages/AddUserPage';
+import { HomePage, VotePage, CastOrSpoilPage } from '../pages';
 import routeIds from './RouteIds';
 
 /**
@@ -24,7 +10,10 @@ import routeIds from './RouteIds';
  */
 const AuthenticatedRoutes: React.FC = () => (
     <Routes>
-        <Route path={routeIds.home} element={<Navigate to="/vote" />} />
+        <Route path={routeIds.home} element={<Navigate to="/" />} />
+        <Route path="/" element={<HomePage />} />
+
+        <Route path={routeIds.vote} element={<Navigate to="/vote" />} />
         <Route path="/vote" element={<VotePage />} />
 
         <Route path={routeIds.castorspoil} element={<Navigate to="/cast-or-spoil" />} />

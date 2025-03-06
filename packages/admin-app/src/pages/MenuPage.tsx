@@ -33,7 +33,7 @@ export const MenuPage: React.FC = () => {
                     type={MenuOptionType.ManageUsers}
                 />{' '}
                 <TypedMenuOption
-                    onClick={() => navigate('/election')}
+                    onClick={() => navigate('/manage-elections')}
                     type={MenuOptionType.ManageElections}
                 />{' '}
                 <TypedMenuOption

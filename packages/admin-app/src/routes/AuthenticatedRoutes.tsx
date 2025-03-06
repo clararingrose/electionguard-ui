@@ -14,6 +14,7 @@ import {
     TallyCeremonyPage,
     UserManagementPage,
     ResetPasswordPage,
+    ElectionPage,
 } from '../pages';
 import AddUserPage from '../pages/AddUserPage';
 import routeIds from './RouteIds';
@@ -29,7 +30,8 @@ const AuthenticatedRoutes: React.FC = () => (
 
         <Route path={routeIds.electionList} element={<ElectionListPage />} />
         <Route path="/election-setup" element={<ElectionSetupPage />} />
-        <Route path="/election/:election-id/key" element={<ElectionKeyPage />} />
+        <Route path="/election/:electionId/key" element={<ElectionKeyPage />} />
+        <Route path="/election/:electionId" element={<ElectionPage />} />
 
         <Route path="/key" element={<KeyListPage />} />
         <Route path={routeIds.keySetup} element={<KeySetupPage />} />
