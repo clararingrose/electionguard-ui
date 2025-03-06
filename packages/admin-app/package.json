@@ -5,6 +5,7 @@
     "license": "MIT",
     "repository": "microsoft/electionguard-ui",
     "version": "0.1.2",
+    "proxy": "http://localhost:3001/",
     "private": true,
     "dependencies": {
         "@electionguard/api-client": "0.1.2",

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Container, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';

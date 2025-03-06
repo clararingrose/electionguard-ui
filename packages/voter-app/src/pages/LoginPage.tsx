@@ -74,7 +74,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ setToken }) => {
 
     return (
         <Container maxWidth="xs" className={classes.root}>
-            <h1>ElectionGuard</h1>
+            <h1>ElectionGuard Voter Interface</h1>
             <div className={classes.errorMessage}>{result}</div>
             <form onSubmit={handleSubmit}>
                 <TextField

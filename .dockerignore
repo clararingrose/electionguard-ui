@@ -7,3 +7,5 @@ build
 node_modules
 packages/admin-app/build
 packages/admin-app/node_modules
+packages/voter-app/build
+packages/voter-app/node_modules

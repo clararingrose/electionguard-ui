@@ -22,6 +22,9 @@ lint:
 admin-app:
 	npm run admin-app
 
+voter-app:
+	npm run voter-app
+
 # Packaging
 npm-version:
 	npm run npm-version

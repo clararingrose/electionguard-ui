@@ -7,6 +7,7 @@
     "scripts": {
         "start": "lerna run start --parallel",
         "admin-app": "lerna run start --scope=@electionguard-ui/admin-app",
+        "voter-app": "lerna run start --scope=@electionguard-ui/voter-app",
         "build": "lerna run build --stream",
         "test": "lerna run test --parallel",
         "lint": "lerna run lint --parallel",
