@@ -1,10 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useNavigate } from 'react-router-dom';
-import { useBallotClient, useElectionClient } from '../hooks/useClient';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import {
+    ElectionQueryRequest,
+    ElectionSummaryDto,
+} from '@electionguard/api-client/dist/nswag/clients';
 import { MessageId } from '../lang';
+import { useBallotClient, useElectionClient } from '../hooks/useClient';
 import routeIds from '../routes/RouteIds';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
@@ -21,13 +26,25 @@ const useStyles = makeStyles((theme) => ({
 export const VotePage: React.FC = () => {
     const classes = useStyles();
     const navigate = useNavigate();
+    const electionId = process.env.ELECTION_ID;
+    // const { electionId } = useParams<{ electionId: string }>();
 
     const [errorMessageId, setErrorMessageId] = useState<string>();
 
     const ballotClient = useBallotClient();
     const electionClient = useElectionClient();
 
-    const name = electionClient.constants();
+    const findParams: ElectionQueryRequest = {
+        filter: {
+            election_id: electionId,
+        },
+    };
+
+    const findElection = () =>
+        electionClient.find(0, 100, findParams).then((response) => response.elections);
+    const { data: elections, isLoading, error } = useQuery('elections', findElection);
+
+    const election = elections?.find((e) => e.election_id === electionId);
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
@@ -39,21 +56,38 @@ export const VotePage: React.FC = () => {
         }
     };
 
+    if (isLoading) {
+        return <Typography>Loading...</Typography>;
+    }
+
+    if (error) {
+        return <Typography>Error loading election details</Typography>;
+    }
+
     return (
         <Grid container className={classes.root}>
             <Container maxWidth="md" className={classes.content}>
-                <h1>ElectionTitle</h1>
+                <h1>Election Title: {election?.manifest.name.text[0].value}</h1>
                 {errorMessageId && (
                     <Grid item xs={12}>
                         <ErrorMessage MessageId={errorMessageId} />
                     </Grid>
                 )}
-                {/* for each item on ballot, create input element dynamically */}
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="one">Choice one</label>
-                    <input type="radio" name="election" id="one" value="Choice one" /> <br />
-                    <label htmlFor="two">Choice two</label>
-                    <input type="radio" name="election" id="two" value="Choice two" />
+                    {election?.manifest.candidates.map((candidate) => (
+                        <div key={candidate.object_id}>
+                            <label htmlFor={candidate.object_id}>
+                                {candidate.name.text[0].value}
+                            </label>
+                            <input
+                                type="radio"
+                                name="election"
+                                id={candidate.object_id}
+                                value={candidate.object_id}
+                            />{' '}
+                            <br />
+                        </div>
+                    ))}
                     <input type="submit" value="Encrypt ballot" />
                 </form>
             </Container>
