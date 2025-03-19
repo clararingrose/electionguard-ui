@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export const FilterToolbar: React.FC = () => (
     <GridToolbarContainer>
-        <GridToolbarFilterButton />
+        <GridToolbarFilterButton onResize={undefined} onResizeCapture={undefined} />
     </GridToolbarContainer>
 );
 

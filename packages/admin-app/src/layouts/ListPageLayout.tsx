@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export interface ListPageLayoutProps {
     title: Message;
     description: Message;
+    // eslint-disable-next-line react/require-default-props
     goHome?: () => void;
 }
 

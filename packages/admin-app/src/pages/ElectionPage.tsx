@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Button, Container, Grid, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { DataGrid, GridColumns, GridValueGetterParams } from '@mui/x-data-grid';
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { ElectionQueryRequest } from '@electionguard/api-client/dist/nswag/clients';
-// import { ElectionState } from '@electionguard/api-client/src/models';
+import { ElectionQueryRequest } from '@electionguard/api-client';
+import { ElectionState } from '@electionguard/api-client/dist/nswag/clients';
 import { useElectionClient } from '../hooks/useClient';
 
 export const ElectionPage: React.FC = () => {
@@ -36,7 +37,6 @@ export const ElectionPage: React.FC = () => {
     const [pageSize, setPageSize] = React.useState(10);
     const { electionId } = useParams<{ electionId: string }>();
     const electionClient = useElectionClient();
-    // const [electionState, setElectionState] = useState<ElectionState>();
 
     const findParams: ElectionQueryRequest = {
         filter: {
@@ -50,17 +50,23 @@ export const ElectionPage: React.FC = () => {
 
     const election = usersQuery.data?.find((e) => e.election_id === electionId);
 
-    // const handleElectionState: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    //     e.preventDefault();
+    const handleElectionState: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+        e.preventDefault();
 
-    //     if (election.state === ElectionState.CREATED) {
-    //         await electionClient.open(electionId);
-    //     } else if (electionState === ElectionState.OPEN) {
-    //         await electionClient.close(electionId);
-    //     } else if (electionState === ElectionState.CLOSED) {
-    //         await electionClient.publish(electionId);
-    //     }
-    // };
+        if (election?.state === ElectionState.CREATED) {
+            if (electionId) {
+                await electionClient.open(electionId);
+            }
+        } else if (election?.state === ElectionState.OPEN) {
+            if (electionId) {
+                await electionClient.close(electionId);
+            }
+        } else if (election?.state === ElectionState.CLOSED) {
+            if (electionId) {
+                await electionClient.publish(electionId);
+            }
+        }
+    };
 
     const candidateColumns = (): GridColumns => [
         {
@@ -118,11 +124,11 @@ export const ElectionPage: React.FC = () => {
                         <strong>State:</strong> {election?.state}
                     </Typography>
                 </Grid>
-                {/* <Grid item xs={12}>
+                <Grid item xs={12}>
                     <Button variant="contained" color="primary" onClick={handleElectionState}>
                         Open Election
                     </Button>
-                </Grid> */}
+                </Grid>
                 <Grid item xs={12}>
                     <Typography variant="body1">
                         <strong>Candidates:</strong>

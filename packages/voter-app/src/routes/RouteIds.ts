@@ -1,7 +1,7 @@
 const routeIds = {
     home: '/',
     vote: '/vote',
-    castorspoil: '/cast-or-spoil',
+    submit: '/submit',
 };
 
 export default routeIds;

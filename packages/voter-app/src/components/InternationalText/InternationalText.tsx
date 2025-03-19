@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { Box, Typography, TypographyProps, useTheme } from '@mui/material';
 import React from 'react';
 import { useIntl } from 'react-intl';

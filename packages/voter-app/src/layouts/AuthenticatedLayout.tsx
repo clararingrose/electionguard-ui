@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface DefaultLayoutProps {
+    // eslint-disable-next-line react/require-default-props
     isLoading?: boolean;
 }
 
@@ -25,7 +26,7 @@ export const AuthenticatedLayout: React.FC<DefaultLayoutProps> = ({
     const classes = useStyles();
     return (
         <Box className={classes.root} height="100vh" display="flex" flexDirection="column">
-            <AppBar title="Admin App" loggedIn />
+            <AppBar title="Voter App" loggedIn />
             <Box display="flex" flexDirection="column" flexGrow={1}>
                 {isLoading ? (
                     <Box

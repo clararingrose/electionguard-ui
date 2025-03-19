@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { Button, Container, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Home } from '@mui/icons-material';

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { Box, Button, AppBar as MaterialAppBar, Toolbar } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';

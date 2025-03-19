@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import {
     ElectionQueryRequest,
-    ElectionSummaryDto,
+    EncryptBallotsRequest,
 } from '@electionguard/api-client/dist/nswag/clients';
+import { sha256 } from 'js-sha256';
 import { MessageId } from '../lang';
 import { useBallotClient, useElectionClient } from '../hooks/useClient';
 import routeIds from '../routes/RouteIds';
@@ -26,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
 export const VotePage: React.FC = () => {
     const classes = useStyles();
     const navigate = useNavigate();
-    const electionId = process.env.ELECTION_ID;
-    // const { electionId } = useParams<{ electionId: string }>();
+    const electionId = process.env.REACT_APP_ELECTION_ID;
 
     const [errorMessageId, setErrorMessageId] = useState<string>();
 
@@ -49,10 +50,35 @@ export const VotePage: React.FC = () => {
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         try {
-            await ballotClient.encrypt;
-            navigate(routeIds.home); // navigate to cast/spoil page
+            const formData = new FormData(e.target as HTMLFormElement);
+            const selectedCandidateId = formData.get('election') as string;
+
+            const plaintextBallot = {
+                object_id: 'placeholder',
+                style_id: election?.manifest.ballot_styles[0].object_id,
+                contests: [
+                    {
+                        object_id: election?.manifest.contests[0].object_id,
+                        ballot_selections: [
+                            {
+                                object_id: selectedCandidateId,
+                                vote: 1,
+                            },
+                        ],
+                    },
+                ],
+            };
+
+            const encryptRequest: EncryptBallotsRequest = {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                election_id: electionId!,
+                seed_hash: sha256(plaintextBallot.toString()),
+                ballots: [plaintextBallot],
+            };
+            await ballotClient.encrypt(encryptRequest);
+            navigate(routeIds.submit);
         } catch (ex) {
-            setErrorMessageId(MessageId.TaskStatus_Error); // could replace with something more specific
+            setErrorMessageId(MessageId.TaskStatus_Error);
         }
     };
 
@@ -74,7 +100,7 @@ export const VotePage: React.FC = () => {
                     </Grid>
                 )}
                 <form onSubmit={handleSubmit}>
-                    {election?.manifest.candidates.map((candidate) => (
+                    {election?.manifest.candidates.map((candidate: any) => (
                         <div key={candidate.object_id}>
                             <label htmlFor={candidate.object_id}>
                                 {candidate.name.text[0].value}

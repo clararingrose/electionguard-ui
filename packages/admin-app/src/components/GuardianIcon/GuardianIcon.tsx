@@ -26,6 +26,7 @@ const useStyles = (color?: string) => {
 };
 
 export interface GuardianIconProps {
+    // eslint-disable-next-line react/require-default-props
     color?: string;
     sequenceOrder: number;
 }

@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface WelcomeHeaderProps {
+    // eslint-disable-next-line react/require-default-props
     Logo?: React.ComponentType<SVGProps<SVGSVGElement>>;
 }
 

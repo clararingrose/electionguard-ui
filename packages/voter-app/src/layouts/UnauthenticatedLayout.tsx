@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export interface DefaultLayoutProps {
+    // eslint-disable-next-line react/require-default-props, react/no-unused-prop-types
     isLoading?: boolean;
 }
 
@@ -19,7 +20,7 @@ export const UnauthenticatedLayout: React.FC<DefaultLayoutProps> = ({ children }
     const classes = useStyles();
     return (
         <Box className={classes.root} height="100vh" display="flex" flexDirection="column">
-            <AppBar title="Admin App" />
+            <AppBar title="Voter App" />
             <Box display="flex" flexDirection="column" flexGrow={1}>
                 {children}
             </Box>

@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface DefaultLayoutProps {
+    // eslint-disable-next-line react/require-default-props
     isLoading?: boolean;
 }
 

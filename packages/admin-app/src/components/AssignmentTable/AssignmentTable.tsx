@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { AsyncResult, UserInfo } from '@electionguard/api-client';
 import makeStyles from '@mui/styles/makeStyles';
 import Box from '@mui/material/Box';

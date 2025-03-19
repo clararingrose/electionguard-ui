@@ -160,6 +160,7 @@ export const ElectionListPage: React.FC = () => {
                         columns={columns()}
                         getRowId={(r) => r.election_id}
                         components={{
+                            // eslint-disable-next-line react/no-unstable-nested-components
                             NoRowsOverlay: () => noRowsOverlay,
                         }}
                         disableSelectionOnClick
