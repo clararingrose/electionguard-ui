@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useState } from 'react';
 import { Container, Grid, Button, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
@@ -78,6 +79,7 @@ export const SubmitBallotPage: React.FC = () => {
                         >
                             Cast Ballot
                         </Button>
+                        <p>Cast your ballot to be included in the official election tally.</p>
                     </Grid>
                     <Grid item xs={6}>
                         <Button
@@ -88,6 +90,16 @@ export const SubmitBallotPage: React.FC = () => {
                         >
                             Spoil Ballot
                         </Button>
+                        <p>
+                            In ElectionGuard, ballot spoiling is used as a means for voters to
+                            challenge the voting machine and force it to reveal the contents of
+                            spoiled ballots for public scrutiny. In this way, a spoiled ballot
+                            challenges the system and the term challenge ballot is used. The ballot
+                            is spoiled after encryption where the machine cannot modify the ballot.
+                            Since the ballot will not be used in the official tally, the content of
+                            the ballot can be revealed at the same time as the tally allowing a
+                            voter to verify the encryption and decryption process.
+                        </p>
                     </Grid>
                 </Grid>
             </Container>

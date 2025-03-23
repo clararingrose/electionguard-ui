@@ -75,8 +75,8 @@ export const VotePage: React.FC = () => {
                 seed_hash: sha256(plaintextBallot.toString()),
                 ballots: [plaintextBallot],
             };
-            await ballotClient.encrypt(encryptRequest);
-            navigate(routeIds.submit);
+            const encryptedBallotResponse = await ballotClient.encrypt(encryptRequest);
+            navigate(routeIds.submit, { state: { encryptedBallotResponse } });
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
         }
@@ -94,6 +94,10 @@ export const VotePage: React.FC = () => {
         <Grid container className={classes.root}>
             <Container maxWidth="md" className={classes.content}>
                 <h1>Election Title: {election?.manifest.name.text[0].value}</h1>
+                <h2>Ballot Title: {election?.manifest.contests[0].ballot_title.text[0].value}</h2>
+                <h3>
+                    Ballot Subtitle: {election?.manifest.contests[0].ballot_subtitle.text[0].value}
+                </h3>
                 {errorMessageId && (
                     <Grid item xs={12}>
                         <ErrorMessage MessageId={errorMessageId} />

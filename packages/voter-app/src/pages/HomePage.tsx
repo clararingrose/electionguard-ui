@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
         <Grid container className={classes.root}>
             <Container maxWidth="md" className={classes.content}>
                 <h1>Home: ElectionID: {electionId}</h1>
-                <Button onClick={() => navigate('/vote')}>Vote</Button>
+                <Button onClick={() => navigate('/vote-wizard')}>Vote</Button>
             </Container>
         </Grid>
     );
