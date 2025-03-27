@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Button, Typography } from '@mui/material';
-import WizardStep, { WizardStepProps } from '../../WizardStep';
+import WizardStep, { WizardStepProps } from '../../WizardStep/WizardStep';
 
 export interface VoteStepProps extends WizardStepProps {
     election: any;
@@ -11,25 +11,32 @@ export interface VoteStepProps extends WizardStepProps {
 const VoteStep: React.FC<VoteStepProps> = ({ active, election, handleSubmit }) => (
     <WizardStep active={active}>
         <form onSubmit={handleSubmit}>
-            <Typography variant="h4">
-                Election Title: {election?.manifest.name.text[0].value}
-            </Typography>
-            <Typography variant="h5">
-                Ballot Title: {election?.manifest.contests[0].ballot_title.text[0].value}
-            </Typography>
-            <Typography variant="h6">
-                Ballot Subtitle: {election?.manifest.contests[0].ballot_subtitle.text[0].value}
-            </Typography>
-            {election?.manifest.candidates.map((candidate: any) => (
-                <div key={candidate.object_id}>
-                    <label htmlFor={candidate.object_id}>{candidate.name.text[0].value}</label>
-                    <input
-                        type="radio"
-                        name="election"
-                        id={candidate.object_id}
-                        value={candidate.object_id}
-                    />{' '}
-                    <br />
+            {election?.manifest.contests.map((contest: any) => (
+                <div
+                    key={contest.object_id}
+                    style={{ border: '1px solid', margin: '1em', padding: '1em' }}
+                >
+                    <Typography variant="h5">{contest.ballot_title.text[0].value}</Typography>
+                    <Typography variant="h6">{contest.ballot_subtitle.text[0].value}</Typography>
+                    {contest.ballot_selections.map((selection: any) => (
+                        <div key={selection.object_id}>
+                            <label htmlFor={selection.object_id}>
+                                {
+                                    election.manifest.candidates.find(
+                                        (candidate: any) =>
+                                            candidate.object_id === selection.candidate_id
+                                    )?.name.text[0].value
+                                }
+                            </label>
+                            <input
+                                type="radio"
+                                name={contest.object_id}
+                                id={selection.object_id}
+                                value={selection.object_id}
+                            />{' '}
+                            <br />
+                        </div>
+                    ))}
                 </div>
             ))}
             <Button type="submit" variant="contained" color="primary">

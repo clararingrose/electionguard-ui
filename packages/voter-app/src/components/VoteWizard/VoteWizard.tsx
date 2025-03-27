@@ -16,6 +16,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import routeIds from '../../routes/RouteIds';
 import VoteStep from './Steps/VoteStep';
 import SubmitBallotStep from './Steps/SubmitBallotStep';
+import ConfirmationStep from './Steps/ConfirmationStep';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +35,7 @@ export const VoteWizard: React.FC = () => {
 
     const [activeStep, setActiveStep] = useState(0);
     const [errorMessageId, setErrorMessageId] = useState<string>();
-    const [encryptedBallotResponse, setEncryptedBallotResponse] = useState<unknown>();
+    const [encryptedBallot, setEncryptedBallot] = useState<any>();
 
     const ballotClient = useBallotClient();
     const electionClient = useElectionClient();
@@ -50,6 +51,8 @@ export const VoteWizard: React.FC = () => {
     const { data: elections, isLoading, error } = useQuery('elections', findElection);
 
     const election = elections?.find((e) => e.election_id === electionId);
+    const electionManifest = election?.manifest;
+    const electionContext = election?.context;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -59,26 +62,32 @@ export const VoteWizard: React.FC = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    const handleFinish = () => {
+        navigate(routeIds.home);
+    };
+
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         try {
             const formData = new FormData(e.target as HTMLFormElement);
-            const selectedCandidateId = formData.get('election') as string;
+
+            const contests = electionManifest.contests.map((contest: any) => {
+                const selectedCandidateId = formData.get(contest.object_id) as string;
+                return {
+                    object_id: contest.object_id,
+                    ballot_selections: [
+                        {
+                            object_id: selectedCandidateId,
+                            vote: 1,
+                        },
+                    ],
+                };
+            });
 
             const plaintextBallot = {
                 object_id: 'placeholder',
-                style_id: election?.manifest.ballot_styles[0].object_id,
-                contests: [
-                    {
-                        object_id: election?.manifest.contests[0].object_id,
-                        ballot_selections: [
-                            {
-                                object_id: selectedCandidateId,
-                                vote: 1,
-                            },
-                        ],
-                    },
-                ],
+                style_id: electionManifest.ballot_styles[0].object_id,
+                contests,
             };
 
             const encryptRequest: EncryptBallotsRequest = {
@@ -87,7 +96,7 @@ export const VoteWizard: React.FC = () => {
                 ballots: [plaintextBallot],
             };
             const response = await ballotClient.encrypt(encryptRequest);
-            setEncryptedBallotResponse(response);
+            setEncryptedBallot(response.ballots[0]);
             handleNext();
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
@@ -98,13 +107,12 @@ export const VoteWizard: React.FC = () => {
         try {
             const castRequest: CastBallotsRequest = {
                 election_id: electionId!,
-                ballots: [],
-                manifest: {},
-                context: {},
+                ballots: [encryptedBallot],
+                manifest: electionManifest,
+                context: electionContext,
             };
             await ballotClient.cast(electionId, castRequest);
-            navigate(routeIds.home); // navigate to home page after casting
-            // should instead navigate to confirmation page
+            handleNext(); // Navigate to the confirmation step
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
         }
@@ -114,13 +122,12 @@ export const VoteWizard: React.FC = () => {
         try {
             const spoilRequest: SpoilBallotsRequest = {
                 election_id: electionId!,
-                ballots: [],
-                manifest: {},
-                context: {},
+                ballots: [encryptedBallot],
+                manifest: electionManifest,
+                context: electionContext,
             };
             await ballotClient.spoil(electionId, spoilRequest);
             navigate(routeIds.home); // navigate to home page after spoiling
-            // should instead navigate to a page that shows the spoiled ballot
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
         }
@@ -134,11 +141,12 @@ export const VoteWizard: React.FC = () => {
         return <Typography>Error loading election details</Typography>;
     }
 
-    const steps = ['Vote', 'Submit Ballot'];
+    const steps = ['Vote', 'Submit Ballot', 'Confirmation'];
 
     return (
         <Grid container className={classes.root}>
             <Container maxWidth="md" className={classes.content}>
+                <Typography variant="h4">{election?.manifest.name.text[0].value}</Typography>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => (
                         <Step key={label}>
@@ -161,7 +169,9 @@ export const VoteWizard: React.FC = () => {
                     handleCastBallot={handleCastBallot}
                     handleSpoilBallot={handleSpoilBallot}
                     handleBack={handleBack}
+                    encryptedBallot={encryptedBallot}
                 />
+                <ConfirmationStep active={activeStep === 2} handleFinish={handleFinish} />
             </Container>
         </Grid>
     );

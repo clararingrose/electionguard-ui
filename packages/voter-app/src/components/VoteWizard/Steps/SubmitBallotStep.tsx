@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Grid } from '@mui/material';
-import WizardStep, { WizardStepProps } from '../../WizardStep';
+import { WizardStep, WizardStepProps } from '../../WizardStep/WizardStep';
 
 export interface SubmitBallotStepProps extends WizardStepProps {
     handleCastBallot: () => void;
     handleSpoilBallot: () => void;
     handleBack: () => void;
+    encryptedBallot: any;
 }
 
 const SubmitBallotStep: React.FC<SubmitBallotStepProps> = ({
@@ -13,6 +14,8 @@ const SubmitBallotStep: React.FC<SubmitBallotStepProps> = ({
     handleCastBallot,
     handleSpoilBallot,
     handleBack,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    encryptedBallot,
 }) => (
     <WizardStep active={active}>
         <Grid container spacing={2}>

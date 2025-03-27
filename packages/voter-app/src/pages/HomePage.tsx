@@ -19,9 +19,11 @@ export const HomePage: React.FC = () => {
     const electionId = process.env.REACT_APP_ELECTION_ID;
 
     return (
+        // if election state is not open, show a message
+        // if election state is open, show the vote wizard
         <Grid container className={classes.root}>
             <Container maxWidth="md" className={classes.content}>
-                <h1>Home: ElectionID: {electionId}</h1>
+                <h1>Home: {electionId}</h1>
                 <Button onClick={() => navigate('/vote-wizard')}>Vote</Button>
             </Container>
         </Grid>
