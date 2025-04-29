@@ -5,6 +5,7 @@ import {
     GridActionsCellItem,
     GridColumns,
     GridOverlay,
+    GridRenderCellParams,
     GridRowParams,
     GridValueGetterParams,
 } from '@mui/x-data-grid';
@@ -61,7 +62,7 @@ export const ElectionListPage: React.FC = () => {
 
     const actions = (params: GridRowParams) => [
         <GridActionsCellItem
-            href={routeIds.electionListPage}
+            // ref removed as it is not valid here
             icon={
                 <I8nTooltip messageId={MessageId.ElectionListPage_UploadBallot}>
                     <UploadBallotButton
@@ -72,10 +73,13 @@ export const ElectionListPage: React.FC = () => {
                 </I8nTooltip>
             }
             label="Upload Ballot"
+            showInMenu
+            onResize={() => {}}
+            onResizeCapture={() => {}}
         />,
     ];
 
-    const getBallots = (params: GridValueGetterParams<ElectionSummaryDto, ElectionSummaryDto>) => (
+    const getBallots = (params: GridRenderCellParams<ElectionSummaryDto, ElectionSummaryDto>) => (
         <Tooltip
             title={`${params.row.cast_ballot_count} cast, ${params.row.spoiled_ballot_count} spoiled`}
         >

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useState } from 'react';
 import { Container, Grid, Stepper, Step, StepLabel, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import {
     ElectionQueryRequest,
@@ -18,6 +19,10 @@ import VoteStep from './Steps/VoteStep';
 import SubmitBallotStep from './Steps/SubmitBallotStep';
 import ConfirmationStep from './Steps/ConfirmationStep';
 
+interface LocationState {
+    voterToken?: string;
+}
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -27,15 +32,18 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(4),
     },
 }));
-
 export const VoteWizard: React.FC = () => {
     const classes = useStyles();
     const navigate = useNavigate();
+    const location = useLocation() as unknown as Location & { state: LocationState };
+    const voterToken = location.state?.voterToken;
     const electionId = process.env.REACT_APP_ELECTION_ID;
 
     const [activeStep, setActiveStep] = useState(0);
     const [errorMessageId, setErrorMessageId] = useState<string>();
     const [encryptedBallot, setEncryptedBallot] = useState<any>();
+    const [trackingCode, setTrackingCode] = useState<string>();
+    const [isSpoiled, setIsSpoiled] = useState<boolean>(false);
 
     const ballotClient = useBallotClient();
     const electionClient = useElectionClient();
@@ -73,8 +81,12 @@ export const VoteWizard: React.FC = () => {
 
             const contests = electionManifest.contests.map((contest: any) => {
                 const selectedCandidateId = formData.get(contest.object_id) as string;
+                if (!selectedCandidateId) {
+                    throw new Error(`No candidate selected for contest: ${contest.object_id}`);
+                }
                 return {
                     object_id: contest.object_id,
+                    sequence_order: contest.sequence_order,
                     ballot_selections: [
                         {
                             object_id: selectedCandidateId,
@@ -95,8 +107,9 @@ export const VoteWizard: React.FC = () => {
                 seed_hash: sha256(plaintextBallot.toString()),
                 ballots: [plaintextBallot],
             };
+
             const response = await ballotClient.encrypt(encryptRequest);
-            setEncryptedBallot(response.ballots[0]);
+            setEncryptedBallot(response.encrypted_ballots[0]);
             handleNext();
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
@@ -107,11 +120,13 @@ export const VoteWizard: React.FC = () => {
         try {
             const castRequest: CastBallotsRequest = {
                 election_id: electionId!,
+                manifest: JSON.parse(JSON.stringify(electionManifest)),
+                context: JSON.parse(JSON.stringify(electionContext)), // Ensure JSON-serializable format
                 ballots: [encryptedBallot],
-                manifest: electionManifest,
-                context: electionContext,
             };
-            await ballotClient.cast(electionId, castRequest);
+            const response = await ballotClient.cast(electionId, voterToken, castRequest);
+            setTrackingCode(response.data);
+            setIsSpoiled(false); // Mark the ballot as cast
             handleNext(); // Navigate to the confirmation step
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
@@ -126,8 +141,10 @@ export const VoteWizard: React.FC = () => {
                 manifest: electionManifest,
                 context: electionContext,
             };
-            await ballotClient.spoil(electionId, spoilRequest);
-            navigate(routeIds.home); // navigate to home page after spoiling
+            const response = await ballotClient.spoil(electionId, voterToken, spoilRequest);
+            setTrackingCode(response.data);
+            setIsSpoiled(true); // Mark the ballot as spoiled
+            handleNext(); // Navigate to the confirmation step
         } catch (ex) {
             setErrorMessageId(MessageId.TaskStatus_Error);
         }
@@ -171,7 +188,13 @@ export const VoteWizard: React.FC = () => {
                     handleBack={handleBack}
                     encryptedBallot={encryptedBallot}
                 />
-                <ConfirmationStep active={activeStep === 2} handleFinish={handleFinish} />
+                <ConfirmationStep
+                    active={activeStep === 2}
+                    handleFinish={handleFinish} // Navigate to the home page
+                    handleRestart={() => setActiveStep(0)} // Restart the vote wizard
+                    trackingCode={trackingCode || 'placeholder'}
+                    isSpoiled={isSpoiled} // Pass whether the ballot was spoiled
+                />
             </Container>
         </Grid>
     );

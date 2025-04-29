@@ -10,6 +10,8 @@ import {
     BallotClient,
     ElectionClient,
     UserClient,
+    TallyClient,
+    DecryptClient,
 } from '@electionguard/api-client/dist/nswag/clients';
 import useToken from './useToken';
 
@@ -27,6 +29,13 @@ export function useV1Client(): V1Client {
 
 export function useCeremonyClient(): CeremonyClient {
     return ClientFactory.GetCeremonyClient();
+}
+
+export function useTallyClient(): TallyClient {
+    const { token, setToken } = useToken();
+    return ClientFactory.GetTallyClient(token?.access_token, (newToken?: Token) =>
+        onTokenExpired(setToken, newToken)
+    );
 }
 
 export function useAuthClient(): AuthClient {
@@ -57,6 +66,15 @@ export function useElectionClient(): ElectionClient {
     const { token, setToken } = useToken();
 
     return ClientFactory.GetElectionClient(token?.access_token, (newToken?: Token) =>
+        onTokenExpired(setToken, newToken)
+    );
+}
+
+// Add the useDecryptClient function
+export function useDecryptClient(): DecryptClient {
+    const { token, setToken } = useToken();
+
+    return ClientFactory.GetDecryptClient(token?.access_token, (newToken?: Token) =>
         onTokenExpired(setToken, newToken)
     );
 }

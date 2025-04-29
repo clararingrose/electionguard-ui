@@ -7,6 +7,8 @@ import {
     Token,
     BallotClient,
     ElectionClient,
+    TallyClient,
+    DecryptClient,
 } from './clients';
 
 export class ClientFactory {
@@ -68,6 +70,28 @@ export class ClientFactory {
     ): ElectionClient {
         const url = this.GetUrl();
         const client = new ElectionClient(url);
+        client.token = token;
+        client.onTokenExpired = onTokenExpired;
+        return client;
+    }
+
+    public static GetTallyClient(
+        token?: string,
+        onTokenExpired?: (newToken?: Token) => void
+    ): TallyClient {
+        const url = this.GetUrl();
+        const client = new TallyClient(url);
+        client.token = token;
+        client.onTokenExpired = onTokenExpired;
+        return client;
+    }
+
+    public static GetDecryptClient(
+        token?: string,
+        onTokenExpired?: (newToken?: Token) => void
+    ): DecryptClient {
+        const url = this.GetUrl();
+        const client = new DecryptClient(url);
         client.token = token;
         client.onTokenExpired = onTokenExpired;
         return client;

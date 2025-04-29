@@ -26,6 +26,7 @@
         "@types/react-dom": "^17.0.11",
         "babel-loader": "8.1.0",
         "clsx": "^1.1.1",
+        "electionguard": "^0.1.0",
         "js-sha256": "^0.11.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -34,12 +35,14 @@
         "react-router-dom": "6.1.1",
         "react-scripts": "^5.0.0",
         "typescript": "^4.3.5",
-        "web-vitals": "^1.0.1"
+        "web-vitals": "^1.0.1",
+        "webpack": "^5.99.7"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --watchAll=false",
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test --watchAll=false",
+        "eject": "react-scripts eject",
         "lint": "npm run eslint",
         "lint:fix": "npm run eslint --fix && npm run prettier --write",
         "eslint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
@@ -56,5 +59,12 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "buffer": "^6.0.3",
+        "crypto-browserify": "^3.12.1",
+        "process": "^0.11.10",
+        "react-app-rewired": "^2.2.1",
+        "stream-browserify": "^3.0.0"
     }
 }

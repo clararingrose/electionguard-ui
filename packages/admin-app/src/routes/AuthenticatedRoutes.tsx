@@ -15,6 +15,7 @@ import {
     UserManagementPage,
     ResetPasswordPage,
     ElectionPage,
+    ElectionTallyPage,
 } from '../pages';
 import AddUserPage from '../pages/AddUserPage';
 import routeIds from './RouteIds';
@@ -32,6 +33,7 @@ const AuthenticatedRoutes: React.FC = () => (
         <Route path="/election-setup" element={<ElectionSetupPage />} />
         <Route path="/election/:electionId/key" element={<ElectionKeyPage />} />
         <Route path="/election/:electionId" element={<ElectionPage />} />
+        <Route path="/election/:electionId/tally" element={<ElectionTallyPage />} />
 
         <Route path="/key" element={<KeyListPage />} />
         <Route path={routeIds.keySetup} element={<KeySetupPage />} />

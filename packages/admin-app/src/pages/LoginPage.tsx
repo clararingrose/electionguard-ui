@@ -43,10 +43,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({ setToken }) => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [result, setResult] = useState<string>();
-
     const authClient = useAuthClient();
+
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+        let isMounted = true;
+
         const loginParams = {
             username,
             password,
@@ -56,20 +58,30 @@ export const LoginPage: React.FC<LoginPageProps> = ({ setToken }) => {
             client_secret: 'electionguard-default-client-secret',
         } as Body_login_for_access_token_api_v1_auth_login_post;
 
-        await authClient
-            .login(loginParams)
-            .then((token: Token) => {
+        try {
+            const token = await authClient.login(loginParams);
+            if (isMounted) {
                 setToken(token);
-            })
-            .catch((ex: unknown) => {
+            }
+        } catch (ex: any) {
+            if (isMounted) {
                 if (typeof ex === 'string') {
                     setResult(ex);
+                } else if (ex.status === 401) {
+                    setResult('Incorrect username or password');
+                } else if (ex.status === 403) {
+                    setResult('Your account has been locked. Please contact support.');
                 } else if (isErrorMessage(ex)) {
                     setResult(ex.detail);
                 } else {
                     setResult('An error occurred');
                 }
-            });
+            }
+        }
+
+        return () => {
+            isMounted = false; // Cleanup function to prevent state updates
+        };
     };
 
     return (

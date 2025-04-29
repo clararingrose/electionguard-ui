@@ -124,6 +124,15 @@ export class AuthClient extends ClientBase {
                         : <ErrorMessage>JSON.parse(_responseText, this.jsonParseReviver);
                 return throwException('Unauthorized', status, _responseText, _headers, result401);
             });
+        } else if (status === 403) {
+            return response.text().then((_responseText) => {
+                let result403: any = null;
+                result403 =
+                    _responseText === ''
+                        ? null
+                        : <ErrorMessage>JSON.parse(_responseText, this.jsonParseReviver);
+                return throwException('Forbidden', status, _responseText, _headers, result403);
+            });
         } else if (status === 404) {
             return response.text().then((_responseText) => {
                 let result404: any = null;
@@ -3533,11 +3542,13 @@ export class BallotClient extends ClientBase {
     /**
      * Cast Ballots
      * @param election_id (optional)
+     * @param voter_token (optional)
      * @return Successful Response
      */
     cast(
         election_id: string | undefined,
-        body: CastBallotsRequest
+        voter_token: string | undefined,
+        data: CastBallotsRequest
     ): Promise<App__api__v1__models__base__BaseResponse> {
         let url_ = this.baseUrl + '/api/v1/ballot/cast?';
         if (election_id === null) throw new Error("The parameter 'election_id' cannot be null.");
@@ -3545,7 +3556,8 @@ export class BallotClient extends ClientBase {
             url_ += 'election_id=' + encodeURIComponent('' + election_id) + '&';
         url_ = url_.replace(/[?&]$/, '');
 
-        const content_ = JSON.stringify(body);
+        // Include voter_token and data in the request body
+        const content_ = JSON.stringify({ voter_token, data });
 
         let options_ = <RequestInit>{
             body: content_,
@@ -3615,11 +3627,13 @@ export class BallotClient extends ClientBase {
     /**
      * Spoil Ballots
      * @param election_id (optional)
+     * @param voter_token (optional)
      * @return Successful Response
      */
     spoil(
         election_id: string | undefined,
-        body: SpoilBallotsRequest
+        voter_token: string | undefined,
+        data: SpoilBallotsRequest
     ): Promise<App__api__v1__models__base__BaseResponse> {
         let url_ = this.baseUrl + '/api/v1/ballot/spoil?';
         if (election_id === null) throw new Error("The parameter 'election_id' cannot be null.");
@@ -3627,7 +3641,8 @@ export class BallotClient extends ClientBase {
             url_ += 'election_id=' + encodeURIComponent('' + election_id) + '&';
         url_ = url_.replace(/[?&]$/, '');
 
-        const content_ = JSON.stringify(body);
+        // Include voter_token in the request body
+        const content_ = JSON.stringify({ voter_token, data });
 
         let options_ = <RequestInit>{
             body: content_,
@@ -3997,6 +4012,37 @@ export class BallotClient extends ClientBase {
         }
         return Promise.resolve<any>(<any>null);
     }
+
+    /**
+     * Check Voter Status
+     * @param election_id The ID of the election
+     * @param username The voter's username
+     * @return Successful Response
+     */
+    checkVoterStatus(election_id: string, username: string): Promise<Response> {
+        // Construct the URL with election_id as a query parameter
+        let url_ =
+            this.baseUrl + `/api/v1/ballot/status?election_id=${encodeURIComponent(election_id)}`;
+        url_ = url_.replace(/[?&]$/, ''); // Remove trailing '&' or '?'
+
+        // Construct the request body with username
+        const content_ = JSON.stringify({ username });
+
+        // Set up the request options
+        const options_: RequestInit = {
+            body: content_,
+            method: 'POST', // Ensure the method is POST
+            headers: {
+                'Content-Type': 'application/json', // Ensure the Content-Type is set to JSON
+                Accept: 'application/json',
+            },
+        };
+
+        // Send the request
+        return this.transformOptions(options_).then((transformedOptions_) =>
+            this.http.fetch(url_, transformedOptions_)
+        );
+    }
 }
 
 export class TestClient extends ClientBase {
@@ -4351,6 +4397,35 @@ export class TallyClient extends ClientBase {
             });
         }
         return Promise.resolve<PlaintextTallyQueryResponse>(<any>null);
+    }
+
+    async decryptSharePostTally(
+        guardian_id: string,
+        encrypted_tally: CiphertextTally,
+        context: CiphertextElectionContextDto
+    ): Promise<CiphertextTallyDecryptionShare[]> {
+        const url = `https://localhost:8001/api/v1/guardian/tally/decrypt-share`;
+        const body = JSON.stringify({
+            guardian_id,
+            encrypted_tally,
+            context,
+        });
+
+        const response = await this.http.fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to decrypt share post tally: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        return result.resp.shares;
     }
 }
 
@@ -5228,6 +5303,7 @@ export enum App__api__v1_1__models__base__ResponseStatus {
 export interface App__api__v1__models__base__BaseResponse {
     status?: App__api__v1__models__base__ResponseStatus;
     message?: string;
+    data?: any;
 }
 
 /** An enumeration. */

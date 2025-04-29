@@ -15,6 +15,7 @@ export {
     UserScope,
     BallotClient,
     ElectionClient,
+    TallyClient,
 } from './clients';
 
 export { ClientFactory } from './ClientFactory';

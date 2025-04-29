@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material';
 import { AuthenticatedLayout } from './layouts';
 import { LoginPage } from './pages';
 import useToken from './hooks/useToken';
+import { ElectionProvider } from './contexts/ElectionContext';
 
 import AuthenticatedRoutes from './routes/AuthenticatedRoutes';
 import UnauthenticatedLayout from './layouts/UnauthenticatedLayout';
@@ -16,23 +17,26 @@ declare module '@mui/styles/defaultTheme' {
 
 const App: React.FunctionComponent = () => {
     const { setToken, token } = useToken();
+    const [username, setUsername] = useState<string | null>(null); // Add username state
 
     const getContent = () => {
         const unauthenticated = !token;
         if (unauthenticated) {
             return (
                 <UnauthenticatedLayout>
-                    <LoginPage setToken={setToken} />
+                    <LoginPage setToken={setToken} setUsername={setUsername} />
                 </UnauthenticatedLayout>
             );
         }
 
         return (
-            <Router>
-                <AuthenticatedLayout>
-                    <AuthenticatedRoutes />
-                </AuthenticatedLayout>
-            </Router>
+            <ElectionProvider>
+                <Router>
+                    <AuthenticatedLayout>
+                        <AuthenticatedRoutes username={username} />
+                    </AuthenticatedLayout>
+                </Router>
+            </ElectionProvider>
         );
     };
 

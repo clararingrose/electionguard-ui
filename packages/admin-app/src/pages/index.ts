@@ -12,3 +12,4 @@ export * from './TallySetupPage';
 export * from './UserManagementPage';
 export * from './ResetPasswordPage';
 export * from './ElectionPage';
+export * from './ElectionTallyPage';
